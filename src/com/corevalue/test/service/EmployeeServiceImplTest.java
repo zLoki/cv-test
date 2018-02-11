@@ -71,13 +71,13 @@ public class EmployeeServiceImplTest {
     @Test
     public void test_printSubordinates_errorIdCannotBeNull() {
         employeeService.printSubordinates(null);
-        assertEquals(bytes.toString(), "Employee ID cannot be null." + EOL);
+        assertEquals(bytes.toString(), "Manager ID cannot be null." + EOL);
     }
 
     @Test
     public void test_printSubordinates_errorEmployeeNotFound() {
         employeeService.printSubordinates(NON_EXISTING_ID);
-        assertEquals(bytes.toString(), "Employee with id: " + NON_EXISTING_ID + " not found." + EOL);
+        assertEquals(bytes.toString(), "Manager with id: " + NON_EXISTING_ID + " not found." + EOL);
     }
 
     @Test

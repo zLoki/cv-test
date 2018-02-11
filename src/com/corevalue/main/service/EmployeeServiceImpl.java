@@ -68,25 +68,25 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void printSubordinates(Integer managerId) {
         if (isNull(managerId)) {
-            print("Employee ID cannot be null.");
+            print("Manager ID cannot be null.");
             return;
         }
 
         Employee manager = getEmployee(managerId);
 
         if (isNull(manager)) {
-            print("Employee with id: " + managerId + " not found.");
+            print("Manager with id: " + managerId + " not found.");
             return;
         }
 
         List<String> subordinates = employeeList.stream()
                 .filter(employee -> nonNull(employee.getManagerId()) && employee.getManagerId().equals(manager.getId()))
-                .map(Employee::toString)
+                .map(Employee::getFullName)
                 .collect(Collectors.toList());
 
         String result = subordinates.isEmpty() ?
-                manager.toString() + " has no subordinates." :
-                manager.toString() + "'s subordinates: " + String.join(", ", subordinates);
+                manager.getFullName() + " has no subordinates." :
+                manager.getFullName() + "'s subordinates: " + String.join(", ", subordinates);
 
         print(result);
     }
@@ -94,7 +94,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void printCompanyEmployees() {
         List<String> employees = employeeList.stream()
-                .map(Employee::toString)
+                .map(Employee::getFullName)
                 .collect(Collectors.toList());
 
         String result = employees.isEmpty() ?
@@ -114,11 +114,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         if (isNull(employee.getManagerId())) {
-            print(employee.toString() + " is CEO himself.");
+            print(employee.getFullName() + " is CEO himself.");
             return;
         }
 
-        print("CEO for " + employee.toString() + " is " + findCeo(employee).toString());
+        print("CEO for " + employee.getFullName() + " is " + findCeo(employee).getFullName());
     }
 
     /*** Private functions ***/

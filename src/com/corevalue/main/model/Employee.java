@@ -9,8 +9,6 @@ public class Employee {
     private String lastName;
     private Integer managerId;
 
-    public Employee() {}
-
     public Employee(Integer id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
@@ -54,9 +52,8 @@ public class Employee {
         this.managerId = managerId;
     }
 
-    @Override
-    public String toString() {
-        return this.firstName + " " + this.lastName;
+    public String getFullName() {
+        return getFirstName() + " " + getLastName();
     }
 
     @Override
@@ -65,13 +62,11 @@ public class Employee {
         if (o == null || getClass() != o.getClass()) return false;
 
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id) &&
-                Objects.equals(firstName, employee.firstName) &&
-                Objects.equals(lastName, employee.lastName);
+        return Objects.equals(id, employee.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id);
     }
 }
