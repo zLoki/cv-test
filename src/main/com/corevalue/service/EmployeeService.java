@@ -1,6 +1,6 @@
-package com.corevalue.main.service;
+package com.corevalue.service;
 
-import com.corevalue.main.model.Employee;
+import com.corevalue.model.Employee;
 
 import java.util.List;
 

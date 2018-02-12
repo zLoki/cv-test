@@ -1,12 +1,12 @@
-package com.corevalue.main;
+package com.corevalue;
 
-import com.corevalue.main.model.Employee;
-import com.corevalue.main.service.EmployeeService;
-import com.corevalue.main.service.EmployeeServiceImpl;
+import com.corevalue.model.Employee;
+import com.corevalue.service.EmployeeService;
+import com.corevalue.service.EmployeeServiceImpl;
 
 import java.util.List;
 
-public class Main {
+public class Launcher {
 
     public static void main(String[] args) {
         EmployeeService employeeService = new EmployeeServiceImpl();

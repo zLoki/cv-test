@@ -1,4 +1,4 @@
-package com.corevalue.main.model;
+package com.corevalue.model;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
-package com.corevalue.main.service;
+package com.corevalue.service;
 
-import com.corevalue.main.model.Employee;
+import com.corevalue.model.Employee;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -51,6 +51,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         if (assertRelationCircularity(employeeId, managerId)) {
             print("Employee cannot become a manager for his manager.");
+            return;
+        }
+
+        if (nonNull(managerId) && isNull(getEmployee(managerId))) {
+            print("Manager with id: " + managerId + " not found.");
             return;
         }
 

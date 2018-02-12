@@ -1,7 +1,7 @@
-package com.corevalue.test.service;
+package com.corevalue.service;
 
-import com.corevalue.main.service.EmployeeService;
-import com.corevalue.main.service.EmployeeServiceImpl;
+import com.corevalue.service.EmployeeService;
+import com.corevalue.service.EmployeeServiceImpl;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -54,6 +54,12 @@ public class EmployeeServiceImplTest {
     public void test_setManager_errorRelationsCircularityForbidden() {
         employeeService.setManager(1, 2);
         assertEquals(bytes.toString(), "Employee cannot become a manager for his manager." + EOL);
+    }
+
+    @Test
+    public void test_setManager_errorEmployeeNotFound() {
+        employeeService.setManager(3, NON_EXISTING_ID);
+        assertEquals(bytes.toString(), "Manager with id: " + NON_EXISTING_ID + " not found." + EOL);
     }
 
     @Test
